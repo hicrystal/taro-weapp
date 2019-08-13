@@ -119,7 +119,7 @@ export default class Index extends Component {
 
         let msgList = this.state.messageList.map(e => {
             return (
-                <View className='list-item' key={e.id}>
+                <View className='list-item' key={e.id+"-number"}>
                     <View className='item-msg'>{e.message}</View>
                     <View className='item-footer'>
                         <View className='item-footer-right'>{e.nickName || "-"}</View>

@@ -4,23 +4,7 @@ import "./index.less"
 import { AtButton } from "taro-ui"
 import CusInput from "../../components/cusInput"
 
-function getRandomInt(min, max) {
-    min = Math.ceil(min)
-    max = Math.floor(max)
-    return Math.floor(Math.random() * (max - min)) + min //不含最大值，含最小值
-}
 
-function Example() {
-    // 声明一个叫 “count” 的 state 变量。
-    const [count, setCount] = useState(0)
-
-    return (
-        <div>
-            <p>You clicked {count} times</p>
-            <button onClick={() => setCount(count + 1)}>Click me</button>
-        </div>
-    )
-}
 
 export default class Index extends Component {
     /**
@@ -42,6 +26,24 @@ export default class Index extends Component {
             btnDisabled: false
         }
     }
+
+    getRandomInt(min, max) {
+        min = Math.ceil(min)
+        max = Math.floor(max)
+        return Math.floor(Math.random() * (max - min)) + min //不含最大值，含最小值
+    }
+    Example() {
+        // 声明一个叫 “count” 的 state 变量。
+        const [count, setCount] = useState(0)
+
+        return (
+            <div>
+                <p>You clicked {count} times</p>
+                <button onClick={() => setCount(count + 1)}>Click me</button>
+            </div>
+        )
+    }
+
     onShareAppMessage(res) {
         return {
             path: "/pages/tabBar/index/index"
@@ -70,7 +72,7 @@ export default class Index extends Component {
 
         this.setState(
             {
-                num: this.state.num + getRandomInt(360, 1800),
+                num: this.state.num + this.getRandomInt(360, 1800),
                 btnDisabled: true
             },
             () => {
@@ -157,7 +159,7 @@ export default class Index extends Component {
         return (
             <View className='rotate-game'>
                 <View className='title'> 超级转盘 </View>
-                {Example}
+                {this.Example()}
                 <View style='display:flex; justify-content:space-between;padding: 10rpx 40rpx;box'>
                     <View onClick={this.showInputBox.bind(this)}>
                         <AtButton className='cus-btn' size='small' type='secondary'>
@@ -182,7 +184,7 @@ export default class Index extends Component {
                 {this.state.showInput ? (
                     <CusInput show={showInput} onSubmit={this.onSubmit.bind(this)} onBlur={this.blur.bind(this)} />
                 ) : (
-                    <AtButton className='action-btn' type='primary' disabled={btnDisabled} onClick={this.start.bind(this)}>
+                    <AtButton className='action-btn' type='primary' disabled={this.state.btnDisabled} onClick={this.start.bind(this)}>
                         开始
                     </AtButton>
                 )}

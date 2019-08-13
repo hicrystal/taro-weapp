@@ -1,5 +1,5 @@
 import Taro, { Component } from "@tarojs/taro"
-
+import "taro-ui/dist/style/components/avatar.scss"
 import "taro-ui/dist/style/components/grid.scss"
 import "taro-ui/dist/style/components/drawer.scss"
 import "taro-ui/dist/style/components/list.scss"

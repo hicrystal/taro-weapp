@@ -1,6 +1,6 @@
 import Taro, { Component } from "@tarojs/taro"
 import { View } from "@tarojs/components"
-import { AtButton, AtGrid } from "taro-ui"
+import { AtGrid, AtAvatar } from "taro-ui"
 
 export default class Index extends Component {
     config = {
@@ -19,9 +19,26 @@ export default class Index extends Component {
         }
     }
 
-    componentWillMount() {}
+    componentWillMount() {
+        Taro.getUserInfo().then(
+            (res)=> {
+            var userInfo = res.userInfo
+            console.log(userInfo);
+            this.state.avatarUrl = userInfo.avatarUrl;
+            console.log(this.state.avatarUrl);
+            this.state.nickName = userInfo.nickName;
+            var nickName = userInfo.nickName
+            var avatarUrl = userInfo.avatarUrl
+            var gender = userInfo.gender //性别 0：未知、1：男、2：女
+            var province = userInfo.province
+            var city = userInfo.city
+            var country = userInfo.country
+          })
+    }
 
-    componentDidMount() {}
+    componentDidMount() {
+
+    }
 
     componentWillUpdate(nextProps, nextState) {}
 
@@ -51,7 +68,8 @@ export default class Index extends Component {
     render() {
         return (
             <View className='home'>
-                <View className='title'> {this.state.title} </View>{" "}
+                <View className='title'> {this.state.title} </View>
+                <AtAvatar circle image={this.state.avatarUrl}></AtAvatar>
                 <AtGrid
                     onClick={this.goPage}
                     hasBorder={false}
@@ -85,11 +103,7 @@ export default class Index extends Component {
                         }
                     ]}
                 />{" "}
-                <View className='btn-group'>
-                    <AtButton type='primary' className='praise' onClick={this.praise}>
-                        赞赏👍{" "}
-                    </AtButton>
-                </View>
+
             </View>
         )
     }
