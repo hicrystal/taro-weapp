@@ -1,4 +1,4 @@
-<p align="center"><img src="static/logo.png" width="100%" height="auto"/></p>
+
 
 > 使用taro框架强力驱动
 
@@ -6,25 +6,13 @@
 
 ### 简介
 
-主要实现用于餐桌，酒桌上的娱乐小游戏，主要包括，摇骰子，大转盘，选扑克牌，文字翻牌游戏。（纯属娱乐，附带一个Keep List）
+主要帮助scrum master 评估点数和任务难度
 
 ### 功能
 
-- [x] 选扑克牌游戏
-- [x] 九宫格文字翻牌游戏
-- [x] 摇骰子 
-- [x] 幸运大转盘 
-- [x] keep list
-- [x] 给赞->赞赏功能
 
-### 结构
+进入房间=》 选定身份=》出牌=》统计点数=》下一个ticket
 
-- 结构简单
-- 一目了然
-
-### 计划
-
-开发计划：https://github.com/users/YTU94/projects/2
 
 ### 后端
 
